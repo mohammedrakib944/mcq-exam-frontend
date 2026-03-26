@@ -31,9 +31,12 @@ export interface MCQ {
   options: string[];
   correctOptionIndex: number;
   explanation?: string;
-  subjectId: string;
-  lessonId: string;
-  topicId: string;
+  chapter?: string;
+  topic?: string;
+  subjectId?: string;
+  subject?: string;
+  lessonId?: string;
+  topicId?: string;
   difficulty: "easy" | "medium" | "hard";
 }
 

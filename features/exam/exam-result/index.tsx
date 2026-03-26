@@ -12,9 +12,15 @@ const examMockQuestions: MCQ[] = [
   {
     id: "m1",
     question: "কোষের পাওয়ার হাউস কোনটি?",
-    options: ["নিউক্লিয়াস", "মাইটোকন্ড্রিয়া", "রাইবোজোম", "এন্ডোপ্লাজমিক রেটিকুলাম"],
+    options: [
+      "নিউক্লিয়াস",
+      "মাইটোকন্ড্রিয়া",
+      "রাইবোজোম",
+      "এন্ডোপ্লাজমিক রেটিকুলাম",
+    ],
     correctOptionIndex: 1,
-    explanation: "মাইটোকন্ড্রিয়া কোষের জৈব রাসায়নিক বিক্রিয়ায় প্রয়োজনীয় অধিকাংশ রাসায়নিক শক্তির উৎপাদন করে।",
+    explanation:
+      "মাইটোকন্ড্রিয়া কোষের জৈব রাসায়নিক বিক্রিয়ায় প্রয়োজনীয় অধিকাংশ রাসায়নিক শক্তির উৎপাদন করে।",
     subject: "Biology",
     chapter: "Cell",
     topic: "Organelles",
@@ -25,7 +31,8 @@ const examMockQuestions: MCQ[] = [
     question: "নিচের কোনটি একটি সর্টিং অ্যালগরিদম?",
     options: ["বাইনারি সার্চ", "ডিএফএস (DFS)", "মার্জ সর্ট", "ডাইকস্ট্রা"],
     correctOptionIndex: 2,
-    explanation: "মার্জ সর্ট হলো একটি কার্যকরী ও সাধারণ উদ্দেশ্যমূলক সর্টিং অ্যালগরিদম।",
+    explanation:
+      "মার্জ সর্ট হলো একটি কার্যকরী ও সাধারণ উদ্দেশ্যমূলক সর্টিং অ্যালগরিদম।",
     subject: "CS",
     chapter: "Algo",
     topic: "Sorting",
@@ -65,7 +72,7 @@ export function ExamResultFeature() {
   const attempted = Object.keys(answers).length;
   let correct = 0;
 
-  examMockQuestions.forEach(q => {
+  examMockQuestions.forEach((q) => {
     if (answers[q.id] === q.correctOptionIndex) {
       correct++;
     }
@@ -78,33 +85,45 @@ export function ExamResultFeature() {
       <div className="text-center space-y-4">
         <h1 className="text-3xl font-bold tracking-tight">পরীক্ষার ফলাফল</h1>
         <p className="text-gray-500">আপনি সফলভাবে পরীক্ষাটি সম্পন্ন করেছেন।</p>
-        
+
         <div className="flex justify-center flex-wrap gap-4 mt-8">
           <Card className="w-48 text-center border-green-200 bg-green-50 shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-green-800">স্কোর</CardTitle>
+              <CardTitle className="text-sm font-medium text-green-800">
+                স্কোর
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-green-700">{scorePercentage}%</div>
-            </CardContent>
-          </Card>
-          
-          <Card className="w-48 text-center shadow-sm">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">সঠিক</CardTitle>
-            </CardHeader>
-            <CardContent className="flex items-center justify-center gap-2">
-              <CheckCircle2 className="w-6 h-6 text-green-500" />
-              <div className="text-3xl font-bold text-gray-800">{correct}/{totalQuestions}</div>
+              <div className="text-4xl font-bold text-green-700">
+                {scorePercentage}%
+              </div>
             </CardContent>
           </Card>
 
           <Card className="w-48 text-center shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">অংশগ্রহণ</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-500">
+                সঠিক
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="w-6 h-6 text-green-500" />
+              <div className="text-3xl font-bold text-gray-800">
+                {correct}/{totalQuestions}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="w-48 text-center shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-gray-500">
+                অংশগ্রহণ
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-gray-800">{attempted}</div>
+              <div className="text-3xl font-bold text-gray-800">
+                {attempted}
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -118,7 +137,7 @@ export function ExamResultFeature() {
 
       <div className="pt-8 space-y-8">
         <h2 className="text-2xl font-semibold">উত্তরসমূহ পর্যালোচনা করুন</h2>
-        
+
         {examMockQuestions.map((q, idx) => {
           const userAnswer = answers[q.id];
           const isCorrect = userAnswer === q.correctOptionIndex;
@@ -132,7 +151,9 @@ export function ExamResultFeature() {
                 ) : isAttempted ? (
                   <XCircle className="w-8 h-8 text-red-500 bg-white rounded-full" />
                 ) : (
-                  <div className="w-8 h-8 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-xs font-bold text-gray-400">?</div>
+                  <div className="w-8 h-8 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-xs font-bold text-gray-400">
+                    ?
+                  </div>
                 )}
               </div>
               <QuestionCard
